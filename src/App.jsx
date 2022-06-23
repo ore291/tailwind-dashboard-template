@@ -9,8 +9,14 @@ import './css/style.scss';
 
 import './charts/ChartjsConfig';
 
+
 // Import pages
 import Dashboard from './pages/Dashboard';
+import Test from "./pages/Dashboard1"
+import Withdrawals from './pages/Withdrawals';
+import Categories from "./pages/Categories";
+import Category from "./components/categories/Category";
+import AddCategory from "./partials/categories/AddCategory";
 
 function App() {
 
@@ -26,7 +32,13 @@ function App() {
     <>
       <Routes>
         <Route exact path="/" element={<Dashboard />} />
+        <Route exact path="/withdraw" element={<Withdrawals />} />
+        <Route exact path="/test" element={<Test />} />
+        <Route exact path="/categories" element={<Categories />} />
+        <Route exact path="/categories/add" element={<AddCategory />} />
+        <Route exact path="/categories/:slug" element={<Category />} />
       </Routes>
+     
     </>
   );
 }

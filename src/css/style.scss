@@ -11,3 +11,15 @@
 @import 'additional-styles/theme.scss';
 
 @tailwind utilities;
+
+
+@layer components {
+    .row-container {
+      /* ... */
+      @apply flex items-center justify-center
+    }
+
+    .col-container {
+        @apply flex flex-col items-center justify-center
+    }
+  }
