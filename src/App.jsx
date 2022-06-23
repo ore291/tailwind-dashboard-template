@@ -17,6 +17,7 @@ import Withdrawals from './pages/Withdrawals';
 import Categories from "./pages/Categories";
 import Category from "./components/categories/Category";
 import AddCategory from "./partials/categories/AddCategory";
+import Rentals from "./pages/Rentals";
 
 function App() {
 
@@ -34,6 +35,7 @@ function App() {
         <Route exact path="/" element={<Dashboard />} />
         <Route exact path="/withdraw" element={<Withdrawals />} />
         <Route exact path="/test" element={<Test />} />
+        <Route exact path="/rentals" element={<Rentals />} />
         <Route exact path="/categories" element={<Categories />} />
         <Route exact path="/categories/add" element={<AddCategory />} />
         <Route exact path="/categories/:slug" element={<Category />} />
