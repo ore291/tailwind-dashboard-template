@@ -1,55 +1,33 @@
-import React from 'react'
-import Layout from '../components/Layout';
+import React from 'react';
+import Layout from "../components/Layout";
 import countriesData from "../tabledata/countries";
 import { Badge, Pagination } from "flowbite-react";
 import { Modal, Button, Toast } from "flowbite-react";
 
-const Withdrawals = () => {
+function Staff() {
   return (
     <Layout>
       <div className="mt-5 relative">
-        <h1 className="text-2xl font-semibold text-center">
-          Withdrawl Requests
-        </h1>
+        <h1 className="text-2xl font-semibold text-center">Staff</h1>
         <div className="max-w-4xl mx-auto p-5">
           <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
             <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
               <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
-                  
+                  <th scope="col" className="px-3 py-3 whitespace-nowrap">
+                    Staff Image
+                  </th>
                   <th scope="col" className="px-6 py-3 text-center">
                     Name
                   </th>
-                  <th scope="col" className="px-6 py-3 text-center ">
-                    Email
+                  <th scope="col" className="px-6 py-3 ">
+                    Role
                   </th>
                   {/* <th scope="col" className="px-6 py-3">
                     
                   </th> */}
-                  <th
-                    scope="col"
-                    className="px-0 py-3  whitespace-nowrap text-center"
-                  >
-                    Amount
-                  </th>
-                  <th
-                    scope="col"
-                    className="px-6 py-3  whitespace-nowrap text-center"
-                  >
-                    Date requested
-                  </th>
-                  <th
-                    scope="col"
-                    className="px-6 py-3  whitespace-nowrap text-center"
-                  >
-                    Status
-                  </th>
-                  <th
-                    scope="col"
-                    className="px-6 py-3  whitespace-nowrap text-center"
-                  >
-                    Bank name/<br></br>
-                    Bank account
+                  <th scope="col" className="px-6 py-3  whitespace-nowrap text-center">
+                    Staff Id
                   </th>
 
                   {/* <th scope="col" className="px-6 py-3">
@@ -66,49 +44,45 @@ const Withdrawals = () => {
                     key={countries.id}
                     className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
                   >
-                    
+                    <td
+                      className="px-6 py-4 truncate "
+                      style={{ width: "100px" }}
+                    >
+                      <img src={countries.image} className="rounded" />
+                    </td>
                     <th
                       scope="row"
                       className="px-0 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap text-center"
                     >
                       {countries.name}
                     </th>
-                    <td className="px-6 py-4 truncate text-center">
-                      {countries.capital}
-                    </td>
-                    <td className="px- py-4 flex justify-center  mx-auto">
+                    <td className="px-6 py-4 truncate">{countries.capital}</td>
+                    <td className="px-6 py-4 flex justify-center mx-auto">
                       {countries.id}
                       {/* {" "}
                       <Badge color="success" size="sm">
                         Approved
                       </Badge> */}
                     </td>
-                    <td className="px-6 py-4 truncate text-center">
-                      {countries.capital}
-                    </td>
                     <td className="px-6 py-4 truncate">
                       <React.Fragment>
                         <Button
-                          color="warning"
+                          color="failure"
                           size="xs"
                           // onClick={toggleModal}
                         >
-                          Pending
+                          Delete
                         </Button>
                       </React.Fragment>
                     </td>
-                    <td className="px-6 py-4 truncat text-cente">
-                      {countries.status}<br></br>
-                      {countries.language}
-                    </td>
-                    <td className="px-0 py-4 truncate">
+                    <td className="px-6 py-4 truncate">
                       <React.Fragment>
                         <Button
                           color="success"
                           size="xs"
                           // onClick={toggleModal}
                         >
-                          Approve withdrawl
+                          Edit
                         </Button>
                       </React.Fragment>
                     </td>
@@ -140,4 +114,4 @@ const Withdrawals = () => {
   );
 }
 
-export default Withdrawals
+export default Staff

@@ -1,34 +1,36 @@
-import React from "react";
+import React from 'react';
 import Layout from "../components/Layout";
-import Category from "../components/categories/Category"
 import countriesData from "../tabledata/countries";
 import { Badge, Pagination } from "flowbite-react";
 
-const Rentals = () => {
+function Items() {
   return (
     <Layout>
       <div className="mt-5 relative">
-        <h1 className="text-2xl font-semibold text-center">rentals</h1>
+        <h1 className="text-2xl font-semibold text-center">Items</h1>
         <div className="max-w-4xl mx-auto p-5">
           <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
             <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
               <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                   <th scope="col" className="px-6 py-3">
-                    Lender
-                  </th>
-                  <th scope="col" className="px-6 py-3">
-                    Lendee
-                  </th>
-                  <th scope="col" className="px-6 py-3">
                     Item
                   </th>
                   <th scope="col" className="px-6 py-3">
-                    Status
+                    User
                   </th>
-                  {/* <th scope="col" className="px-6 py-3">
-                    Id
-                  </th> */}
+                  <th scope="col" className="px-6 py-3">
+                    Approved
+                  </th>
+                  <th scope="col" className="px-6 py-3">
+                    Daily price
+                  </th>
+                  <th scope="col" className="px-6 py-3">
+                    Weekly price
+                  </th>
+                  <th scope="col" className="px-6 py-3">
+                    Monthly price
+                  </th>
                   {/* <th scope="col" className="px-6 py-3">
                     <span className="sr-only">Edit</span>
                 </th> */}
@@ -50,14 +52,16 @@ const Rentals = () => {
                       {countries.name}
                     </th>
                     <td className="px-6 py-4 truncate">{countries.capital}</td>
-                    <td className="px-6 py-4">{countries.language}</td>
                     <td className="px-6 py-4 flex justify-start">
                       {" "}
-                      <Badge color="info" size="sm">
-                        Default
+                      <Badge color="success" size="sm">
+                        Approved
                       </Badge>
                     </td>
-                    {/* <td className="px-6 py-4">{countries.id}</td> */}
+
+                    <td className="px-6 py-4 text-center">{countries.language}</td>
+                    <td className="px-6 py-4 text-center">{countries.id}</td>
+                    <td className="px-6 py-4 text-center">{countries.id}</td>
 
                     {/* <td className="px-6 py-4 text-right">
                     <a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
@@ -79,6 +83,6 @@ const Rentals = () => {
       </div>
     </Layout>
   );
-};
+}
 
-export default Rentals;
+export default Items

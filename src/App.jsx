@@ -18,6 +18,10 @@ import Categories from "./pages/Categories";
 import Category from "./components/categories/Category";
 import AddCategory from "./partials/categories/AddCategory";
 import Rentals from "./pages/Rentals";
+import Items from "./pages/Items";
+import Staff from "./pages/Staff";
+import Users from './pages/Users';
+
 
 function App() {
 
@@ -36,11 +40,14 @@ function App() {
         <Route exact path="/withdraw" element={<Withdrawals />} />
         <Route exact path="/test" element={<Test />} />
         <Route exact path="/rentals" element={<Rentals />} />
+        <Route exact path="/items" element={<Items />} />
+        <Route exact path="/staff" element={<Staff />} />
+        <Route exact path="/users" element={<Users />} />
+        <Route exact path="/withdrawls" element={<Withdrawals />} />
         <Route exact path="/categories" element={<Categories />} />
         <Route exact path="/categories/add" element={<AddCategory />} />
         <Route exact path="/categories/:slug" element={<Category />} />
       </Routes>
-     
     </>
   );
 }
