@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { NavLink, useLocation } from "react-router-dom";
+import { FaCog } from "react-icons/fa";
 
 import SidebarLinkGroup from "./SidebarLinkGroup";
 
@@ -480,33 +481,33 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
               {/* Withdrawls */}
               <li
                 className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${
-                  pathname.includes("withdrawls") && "bg-slate-900"
+                  pathname.includes("withdrawals") && "bg-slate-900"
                 }`}
               >
                 <NavLink
                   end
-                  to="/withdrawls"
+                  to="/withdrawals"
                   className={`block text-slate-200 hover:text-white truncate transition duration-150 ${
-                    pathname.includes("withdrawls") && "hover:text-slate-200"
+                    pathname.includes("withdrawals") && "hover:text-slate-200"
                   }`}
                 >
                   <div className="flex items-center">
                     <svg className="shrink-0 h-6 w-6" viewBox="0 0 24 24">
                       <path
                         className={`fill-current text-slate-600 ${
-                          pathname.includes("withdrawls") && "text-indigo-500"
+                          pathname.includes("withdrawals") && "text-indigo-500"
                         }`}
                         d="M0 20h24v2H0z"
                       />
                       <path
                         className={`fill-current text-slate-400 ${
-                          pathname.includes("withdrawls") && "text-indigo-300"
+                          pathname.includes("withdrawals") && "text-indigo-300"
                         }`}
                         d="M4 18h2a1 1 0 001-1V8a1 1 0 00-1-1H4a1 1 0 00-1 1v9a1 1 0 001 1zM11 18h2a1 1 0 001-1V3a1 1 0 00-1-1h-2a1 1 0 00-1 1v14a1 1 0 001 1zM17 12v5a1 1 0 001 1h2a1 1 0 001-1v-5a1 1 0 00-1-1h-2a1 1 0 00-1 1z"
                       />
                     </svg>
                     <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                     Withdrawls
+                     Withdrawals
                     </span>
                   </div>
                 </NavLink>
@@ -1007,7 +1008,16 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                       >
                         <div className="flex items-center justify-between">
                           <div className="flex items-center">
-                            <svg
+                            <FaCog
+                              className={`fill-current shrink-0 h-6 w-6 text-slate-600 ${
+                                pathname.includes("settings") &&
+                              "text-indigo-500"}
+                                 ${ pathname.includes("settings") &&
+                                  "text-indigo-300"}
+                              }`}
+                            />
+
+                            {/* <svg
                               className="shrink-0 h-6 w-6"
                               viewBox="0 0 24 24"
                             >
@@ -1039,7 +1049,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                                 }`}
                                 d="M19.707 9.292a3.012 3.012 0 00-1.415 1.415L13.286 5.7c-.4.195-.84.298-1.286.3a3 3 0 113-3 2.969 2.969 0 01-.3 1.286l5.007 5.006z"
                               />
-                            </svg>
+                            </svg> */}
                             <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
                               Settings
                             </span>
@@ -1062,11 +1072,11 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                           <li className="mb-1 last:mb-0">
                             <NavLink
                               end
-                              to="/"
+                              to="/settings"
                               className="block text-slate-400 hover:text-slate-200 transition duration-150 truncate"
                             >
                               <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                                My Account
+                               Commission settings
                               </span>
                             </NavLink>
                           </li>
