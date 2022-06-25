@@ -22,11 +22,11 @@ import Items from "./pages/Items";
 import Staff from "./pages/Staff";
 import Users from './pages/Users';
 import Settings from './pages/Settings';
-<<<<<<< HEAD
+
 import Transactions from './pages/Transactions';
-=======
+
 import SingleUser from './pages/SingleUser';
->>>>>>> 2e75ebeae41d431246c37e27c47404e944d63257
+
 
 
 function App() {
@@ -49,11 +49,11 @@ function App() {
         <Route exact path="/items" element={<Items />} />
         <Route exact path="/staff" element={<Staff />} />
         <Route exact path="/users" element={<Users />} />
-<<<<<<< HEAD
+
         <Route exact path="/transactions" element={<Transactions />} />
-=======
+
         <Route exact path="/users/:id" element={<SingleUser />} />
->>>>>>> 2e75ebeae41d431246c37e27c47404e944d63257
+
         <Route exact path="/settings" element={<Settings />} />
         <Route exact path="/withdrawals" element={<Withdrawals />} />
         <Route exact path="/categories" element={<Categories />} />
