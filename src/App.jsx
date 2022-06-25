@@ -22,6 +22,7 @@ import Items from "./pages/Items";
 import Staff from "./pages/Staff";
 import Users from './pages/Users';
 import Settings from './pages/Settings';
+import Transactions from './pages/Transactions';
 
 
 function App() {
@@ -44,6 +45,7 @@ function App() {
         <Route exact path="/items" element={<Items />} />
         <Route exact path="/staff" element={<Staff />} />
         <Route exact path="/users" element={<Users />} />
+        <Route exact path="/transactions" element={<Transactions />} />
         <Route exact path="/settings" element={<Settings />} />
         <Route exact path="/withdrawals" element={<Withdrawals />} />
         <Route exact path="/categories" element={<Categories />} />
