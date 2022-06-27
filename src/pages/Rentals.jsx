@@ -8,7 +8,7 @@ const Rentals = () => {
   return (
     <Layout>
       <div className="mt-5 relative">
-        <h1 className="text-2xl font-semibold text-center">rentals</h1>
+        <h1 className="text-2xl font-semibold text-center">Rentals</h1>
         <div className="max-w-4xl mx-auto p-5">
           <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
             <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
