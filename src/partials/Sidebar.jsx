@@ -70,12 +70,31 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
         }`}
       >
         {/* Sidebar header */}
-        <div className="flex justify-between mb-10 pr-3 sm:px-2">
+        <div className="flex justify-end mb-10 pr-2  flex-1 sm:px-2">
           {/* Close button */}
-          <button
+          {/* Expand / collapse button */}
+          <div className="pt-0 hidde lg:inline-flex  2xl:hidden justify-start flex-wrap mt-auto">
+            <div className="px-3 py-2">
+              <button onClick={() => setSidebarExpanded(!sidebarExpanded)}>
+                <span className="sr-only">Expand / collapse sidebar</span>
+                
+                <svg
+                  className="w-6 h-6 fill-current sidebar-expanded:rotate-180"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    className="text-slate-400"
+                    d="M19.586 11l-5-5L16 4.586 23.414 12 16 19.414 14.586 18l5-5H7v-2z"
+                  />
+                  <path className="text-slate-600" d="M3 23H1V1h2z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          {/* <button
             ref={trigger}
-            className="lg:hidden text-slate-500 hover:text-slate-400"
-            onClick={() => setSidebarOpen(!sidebarOpen)}
+            className="lg:hidde text-slate-500 hover:text-slate-400"
+            onClick={() => setSidebarOpen(sidebarOpen)}
             aria-controls="sidebar"
             aria-expanded={sidebarOpen}
           >
@@ -87,9 +106,9 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
             >
               <path d="M10.7 18.7l1.4-1.4L7.8 13H20v-2H7.8l4.3-4.3-1.4-1.4L4 12z" />
             </svg>
-          </button>
+          </button> */}
           {/* Logo */}
-          <NavLink end to="/" className="block">
+          {/* <NavLink end to="/" className="block">
             <svg width="32" height="32" viewBox="0 0 32 32">
               <defs>
                 <linearGradient
@@ -127,11 +146,11 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                 fill="url(#logo-b)"
               />
             </svg>
-          </NavLink>
+          </NavLink> */}
         </div>
 
         {/* Links */}
-        <div className="space-y-8">
+        <div className="space-y-8 ">
           {/* Pages group */}
           <div>
             <h3 className="text-xs uppercase text-slate-500 font-semibold pl-3">
@@ -507,12 +526,46 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                       />
                     </svg>
                     <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                     Withdrawals
+                      Withdrawals
                     </span>
                   </div>
                 </NavLink>
               </li>
-              {/* Analytics */}
+              {/* Transactions */}
+              <li
+                className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${
+                  pathname.includes("transactions") && "bg-slate-900"
+                }`}
+              >
+                <NavLink
+                  end
+                  to="/transactions"
+                  className={`block text-slate-200 hover:text-white truncate transition duration-150 ${
+                    pathname.includes("transactions") && "hover:text-slate-200"
+                  }`}
+                >
+                  <div className="flex items-center">
+                    <svg className="shrink-0 h-6 w-6" viewBox="0 0 24 24">
+                      <path
+                        className={`fill-current text-slate-600 ${
+                          pathname.includes("transactions") && "text-indigo-500"
+                        }`}
+                        d="M0 20h24v2H0z"
+                      />
+                      <path
+                        className={`fill-current text-slate-400 ${
+                          pathname.includes("transactions") && "text-indigo-300"
+                        }`}
+                        d="M4 18h2a1 1 0 001-1V8a1 1 0 00-1-1H4a1 1 0 00-1 1v9a1 1 0 001 1zM11 18h2a1 1 0 001-1V3a1 1 0 00-1-1h-2a1 1 0 00-1 1v14a1 1 0 001 1zM17 12v5a1 1 0 001 1h2a1 1 0 001-1v-5a1 1 0 00-1-1h-2a1 1 0 00-1 1z"
+                      />
+                    </svg>
+                    <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                      Transactions
+                    </span>
+                  </div>
+                </NavLink>
+              </li>
+              {/* Analytics
               <li
                 className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${
                   pathname.includes("test") && "bg-slate-900"
@@ -545,9 +598,9 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                     </span>
                   </div>
                 </NavLink>
-              </li>
+              </li> */}
               {/* E-Commerce */}
-              <SidebarLinkGroup
+              {/* <SidebarLinkGroup
                 activecondition={pathname.includes("ecommerce")}
               >
                 {(handleClick, open) => {
@@ -598,7 +651,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                               test
                             </span>
                           </div>
-                          {/* Icon */}
+                          {/* Icon *
                           <div className="flex shrink-0 ml-2">
                             <svg
                               className={`w-3 h-3 shrink-0 ml-1 fill-current text-slate-400 ${
@@ -717,9 +770,9 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                     </React.Fragment>
                   );
                 }}
-              </SidebarLinkGroup>
+              </SidebarLinkGroup> */}
               {/* Campaigns */}
-              <li
+              {/* <li
                 className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${
                   pathname.includes("campaigns") && "bg-slate-900"
                 }`}
@@ -751,9 +804,9 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                     </span>
                   </div>
                 </NavLink>
-              </li>
+              </li> */}
               {/* Team */}
-              <SidebarLinkGroup activecondition={pathname.includes("team")}>
+              {/* <SidebarLinkGroup activecondition={pathname.includes("team")}>
                 {(handleClick, open) => {
                   return (
                     <React.Fragment>
@@ -792,7 +845,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                               Team
                             </span>
                           </div>
-                          {/* Icon */}
+                          {/* Icon *
                           <div className="flex shrink-0 ml-2">
                             <svg
                               className={`w-3 h-3 shrink-0 ml-1 fill-current text-slate-400 ${
@@ -845,9 +898,9 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                     </React.Fragment>
                   );
                 }}
-              </SidebarLinkGroup>
+              </SidebarLinkGroup> */}
               {/* Messages */}
-              <li
+              {/* <li
                 className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${
                   pathname.includes("messages") && "bg-slate-900"
                 }`}
@@ -879,9 +932,9 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                     </span>
                   </div>
                 </NavLink>
-              </li>
+              </li> */}
               {/* Tasks */}
-              <li
+              {/* <li
                 className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${
                   pathname.includes("tasks") && "bg-slate-900"
                 }`}
@@ -919,9 +972,9 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                     </span>
                   </div>
                 </NavLink>
-              </li>
+              </li> */}
               {/* Inbox */}
-              <li
+              {/* <li
                 className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${
                   pathname.includes("inbox") && "bg-slate-900"
                 }`}
@@ -953,9 +1006,9 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                     </span>
                   </div>
                 </NavLink>
-              </li>
+              </li> */}
               {/* Calendar */}
-              <li
+              {/* <li
                 className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${
                   pathname.includes("calendar") && "bg-slate-900"
                 }`}
@@ -987,7 +1040,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                     </span>
                   </div>
                 </NavLink>
-              </li>
+              </li> */}
               {/* Settings */}
               <SidebarLinkGroup activecondition={pathname.includes("settings")}>
                 {(handleClick, open) => {
@@ -1011,9 +1064,12 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                             <FaCog
                               className={`fill-current shrink-0 h-6 w-6 text-slate-600 ${
                                 pathname.includes("settings") &&
-                              "text-indigo-500"}
-                                 ${ pathname.includes("settings") &&
-                                  "text-indigo-300"}
+                                "text-indigo-500"
+                              }
+                                 ${
+                                   pathname.includes("settings") &&
+                                   "text-indigo-300"
+                                 }
                               }`}
                             />
 
@@ -1076,7 +1132,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                               className="block text-slate-400 hover:text-slate-200 transition duration-150 truncate"
                             >
                               <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                               Commission settings
+                                Commission settings
                               </span>
                             </NavLink>
                           </li>
@@ -1286,7 +1342,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
         </div>
 
         {/* Expand / collapse button */}
-        <div className="pt-3 hidden lg:inline-flex 2xl:hidden justify-end mt-auto">
+        {/* <div className="pt-3 hidden lg:inline-flex 2xl:hidden justify-end mt-auto">
           <div className="px-3 py-2">
             <button onClick={() => setSidebarExpanded(!sidebarExpanded)}>
               <span className="sr-only">Expand / collapse sidebar</span>
@@ -1302,7 +1358,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
               </svg>
             </button>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
