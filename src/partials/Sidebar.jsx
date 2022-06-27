@@ -70,10 +70,10 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
         }`}
       >
         {/* Sidebar header */}
-        <div className="flex justify-evenly mb-10 pr-  flex-1 sm:px-2">
+        <div className="flex justify-end mb-10 pr-2  flex-1 sm:px-2">
           {/* Close button */}
           {/* Expand / collapse button */}
-          <div className="pt- hidden lg:inline-flex  2xl:hidden justify-start flex-wrap mt-auto">
+          <div className="pt-0 hidde lg:inline-flex  2xl:hidden justify-start flex-wrap mt-auto">
             <div className="px-3 py-2">
               <button onClick={() => setSidebarExpanded(!sidebarExpanded)}>
                 <span className="sr-only">Expand / collapse sidebar</span>
@@ -150,7 +150,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
         </div>
 
         {/* Links */}
-        <div className="space-y-8">
+        <div className="space-y-8 ">
           {/* Pages group */}
           <div>
             <h3 className="text-xs uppercase text-slate-500 font-semibold pl-3">
@@ -565,7 +565,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                   </div>
                 </NavLink>
               </li>
-              {/* Analytics */}
+              {/* Analytics
               <li
                 className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${
                   pathname.includes("test") && "bg-slate-900"
@@ -598,9 +598,9 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                     </span>
                   </div>
                 </NavLink>
-              </li>
+              </li> */}
               {/* E-Commerce */}
-              <SidebarLinkGroup
+              {/* <SidebarLinkGroup
                 activecondition={pathname.includes("ecommerce")}
               >
                 {(handleClick, open) => {
@@ -651,7 +651,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                               test
                             </span>
                           </div>
-                          {/* Icon */}
+                          {/* Icon *
                           <div className="flex shrink-0 ml-2">
                             <svg
                               className={`w-3 h-3 shrink-0 ml-1 fill-current text-slate-400 ${
@@ -770,9 +770,9 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                     </React.Fragment>
                   );
                 }}
-              </SidebarLinkGroup>
+              </SidebarLinkGroup> */}
               {/* Campaigns */}
-              <li
+              {/* <li
                 className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${
                   pathname.includes("campaigns") && "bg-slate-900"
                 }`}
@@ -804,9 +804,9 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                     </span>
                   </div>
                 </NavLink>
-              </li>
+              </li> */}
               {/* Team */}
-              <SidebarLinkGroup activecondition={pathname.includes("team")}>
+              {/* <SidebarLinkGroup activecondition={pathname.includes("team")}>
                 {(handleClick, open) => {
                   return (
                     <React.Fragment>
@@ -845,7 +845,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                               Team
                             </span>
                           </div>
-                          {/* Icon */}
+                          {/* Icon *
                           <div className="flex shrink-0 ml-2">
                             <svg
                               className={`w-3 h-3 shrink-0 ml-1 fill-current text-slate-400 ${
@@ -898,9 +898,9 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                     </React.Fragment>
                   );
                 }}
-              </SidebarLinkGroup>
+              </SidebarLinkGroup> */}
               {/* Messages */}
-              <li
+              {/* <li
                 className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${
                   pathname.includes("messages") && "bg-slate-900"
                 }`}
@@ -932,9 +932,9 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                     </span>
                   </div>
                 </NavLink>
-              </li>
+              </li> */}
               {/* Tasks */}
-              <li
+              {/* <li
                 className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${
                   pathname.includes("tasks") && "bg-slate-900"
                 }`}
@@ -972,9 +972,9 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                     </span>
                   </div>
                 </NavLink>
-              </li>
+              </li> */}
               {/* Inbox */}
-              <li
+              {/* <li
                 className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${
                   pathname.includes("inbox") && "bg-slate-900"
                 }`}
@@ -1006,9 +1006,9 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                     </span>
                   </div>
                 </NavLink>
-              </li>
+              </li> */}
               {/* Calendar */}
-              <li
+              {/* <li
                 className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${
                   pathname.includes("calendar") && "bg-slate-900"
                 }`}
@@ -1040,7 +1040,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                     </span>
                   </div>
                 </NavLink>
-              </li>
+              </li> */}
               {/* Settings */}
               <SidebarLinkGroup activecondition={pathname.includes("settings")}>
                 {(handleClick, open) => {
@@ -1342,7 +1342,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
         </div>
 
         {/* Expand / collapse button */}
-        <div className="pt-3 hidden lg:inline-flex 2xl:hidden justify-end mt-auto">
+        {/* <div className="pt-3 hidden lg:inline-flex 2xl:hidden justify-end mt-auto">
           <div className="px-3 py-2">
             <button onClick={() => setSidebarExpanded(!sidebarExpanded)}>
               <span className="sr-only">Expand / collapse sidebar</span>
@@ -1358,7 +1358,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
               </svg>
             </button>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

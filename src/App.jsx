@@ -26,6 +26,7 @@ import Settings from './pages/Settings';
 import Transactions from './pages/Transactions';
 
 import SingleUser from './pages/SingleUser';
+import Login from './pages/Login';
 
 
 
@@ -53,6 +54,8 @@ function App() {
         <Route exact path="/transactions" element={<Transactions />} />
 
         <Route exact path="/users/:id" element={<SingleUser />} />
+        
+        <Route exact path="/login" element={<Login />} />
 
         <Route exact path="/settings" element={<Settings />} />
         <Route exact path="/withdrawals" element={<Withdrawals />} />
