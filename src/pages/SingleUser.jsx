@@ -9,7 +9,7 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import Profile from "../partials/Profile";
 import Image05 from "../images/user-36-09.jpg";
-import SingleUserTables from "../partials/singleUserTables";
+
 import SingleRentalTable from "../partials/SingleRentalTable";
 import SingleItemTable from "../partials/SingleItemTable";
 import SingleWithdrawalTable from "../partials/SingleWithdrawalTable";

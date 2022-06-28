@@ -70,14 +70,14 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
         }`}
       >
         {/* Sidebar header */}
-        <div className="flex justify-end mb-10 pr-2  flex-1 sm:px-2">
+        <div className="flex justify-end mb-10 pr-2   sm:px-2">
           {/* Close button */}
           {/* Expand / collapse button */}
-          <div className="pt-0 hidde lg:inline-flex  2xl:hidden justify-start flex-wrap mt-auto">
+          <div className="pt-0 hidden lg:inline-flex  2xl:hidden justify-start flex-wrap mt-auto">
             <div className="px-3 py-2">
               <button onClick={() => setSidebarExpanded(!sidebarExpanded)}>
                 <span className="sr-only">Expand / collapse sidebar</span>
-                
+
                 <svg
                   className="w-6 h-6 fill-current sidebar-expanded:rotate-180"
                   viewBox="0 0 24 24"
@@ -91,9 +91,9 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
               </button>
             </div>
           </div>
-          {/* <button
+          <button
             ref={trigger}
-            className="lg:hidde text-slate-500 hover:text-slate-400"
+            className="hidden text-slate-500 hover:text-slate-400"
             onClick={() => setSidebarOpen(sidebarOpen)}
             aria-controls="sidebar"
             aria-expanded={sidebarOpen}
@@ -106,7 +106,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
             >
               <path d="M10.7 18.7l1.4-1.4L7.8 13H20v-2H7.8l4.3-4.3-1.4-1.4L4 12z" />
             </svg>
-          </button> */}
+          </button>
           {/* Logo */}
           {/* <NavLink end to="/" className="block">
             <svg width="32" height="32" viewBox="0 0 32 32">

@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 import { Modal, Button, Toast } from "flowbite-react";
 import { HiOutlineExclamationCircle, HiX } from "react-icons/hi";
 import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+
 
 const Category = () => {
   const { slug } = useParams();
@@ -192,7 +192,7 @@ const Category = () => {
                   pauseOnHover
                 />
                 {/* Same as */}
-                <ToastContainer />
+                {/* <ToastContainer /> */}
               </div>
             ) : (
               <div className="max-w-4xl mx-auto row-container">
