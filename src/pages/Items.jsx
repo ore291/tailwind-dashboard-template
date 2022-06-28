@@ -2,6 +2,7 @@ import React from 'react';
 import Layout from "../components/Layout";
 import countriesData from "../tabledata/countries";
 import { Badge, Pagination } from "flowbite-react";
+import {formatCurrency} from "../helper"
 
 function Items() {
   return (

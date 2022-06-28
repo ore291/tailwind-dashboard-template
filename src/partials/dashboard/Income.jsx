@@ -1,124 +1,104 @@
-import React from 'react';
-
-import Image01 from '../../images/user-36-05.jpg';
-import Image02 from '../../images/user-36-06.jpg';
-import Image03 from '../../images/user-36-07.jpg';
-import Image04 from '../../images/user-36-08.jpg';
-import Image05 from '../../images/user-36-09.jpg';
+import React from "react";
+import { useGetDashboardRevenueQuery } from "../../store/services/dashboard";
+import { Link } from "react-router-dom";
+import { Spinner } from "flowbite-react";
+import { formatDate, formatCurrency } from "../../helper";
 
 function Income() {
-
-  const customers = [
+  const {
+    data: transactions,
+    isFetching,
+    isLoading,
+  } = useGetDashboardRevenueQuery(
+    { skip: 0, limit: 6 },
     {
-      id: '0',
-      image: Image01,
-      name: 'Alex Shatov',
-      email: 'alexshatov@gmail.com',
-      location: '🇺🇸',
-      spent: '$2,890.66',
-    },
-    {
-      id: '1',
-      image: Image02,
-      name: 'Philip Harbach',
-      email: 'philip.h@gmail.com',
-      location: '🇩🇪',
-      spent: '$2,767.04',
-    },
-    {
-      id: '2',
-      image: Image03,
-      name: 'Mirko Fisuk',
-      email: 'mirkofisuk@gmail.com',
-      location: '🇫🇷',
-      spent: '$2,996.00',
-    },
-    {
-      id: '3',
-      image: Image04,
-      name: 'Olga Semklo',
-      email: 'olga.s@cool.design',
-      location: '🇮🇹',
-      spent: '$1,220.66',
-    },
-    {
-      id: '4',
-      image: Image05,
-      name: 'Burak Long',
-      email: 'longburak@gmail.com',
-      location: '🇬🇧',
-      spent: '$1,890.66',
-    },
-  ];
+      refetchOnMountOrArgChange: true,
+      skip: false,
+    }
+  );
 
   return (
     <div className="col-span-full xl:col-span-6 bg-white shadow-lg rounded-sm border border-slate-200">
       <header className="px-5 py-4 border-b border-slate-100 flex justify-between Income-center ">
-        <h2 className="font-semibold text-slate-800">Revenue Income</h2>
-        <span className="cursor-pointer font-semibold text-slate-800">View All</span>
+        <h2 className="font-semibold text-slate-800">Transactions</h2>
+        <Link to="/transactions">
+          <span className="cursor-pointer font-semibold text-slate-800">
+            View All
+          </span>
+        </Link>
       </header>
       <div className="p-3">
-
         {/* Table */}
-        <div className="overflow-x-auto">
-          <table className="table-auto w-full">
-            {/* Table header */}
-            <thead className="text-xs font-semibold uppercase text-slate-400 bg-slate-50">
-              <tr>
-                <th className="p-2 whitespace-nowrap">
-                  <div className="font-semibold text-left">User</div>
-                </th>
-                <th className="p-2 whitespace-nowrap">
-                  <div className="font-semibold text-left">Lender</div>
-                </th>
-                <th className="p-2 whitespace-nowrap">
-                  <div className="font-semibold text-left">Item</div>
-                </th>
-                <th className="p-2 whitespace-nowrap">
-                  <div className="font-semibold text-left">Duration</div>
-                </th>
-                <th className="p-2 whitespace-nowrap">
-                  <div className="font-semibold text-left">Paid</div>
-                </th>
-              
-                
-              </tr>
-            </thead>
-            {/* Table body */}
-            <tbody className="text-sm divide-y divide-slate-100">
-              {
-                customers.map(customer => {
-                  return (
-                    <tr key={customer.id}>
-                      <td className="p-2 whitespace-nowrap">
-                        <div className="flex Income-center">
-                          <div className="w-10 h-10 shrink-0 mr-2 sm:mr-3">
-                            <img className="rounded-full" src={customer.image} width="40" height="40" alt={customer.name} />
+        {isLoading ? (
+          <Spinner
+            color="success"
+            size="lg"
+            aria-label="Success spinner example"
+          />
+        ) : (
+          transactions && (
+            <div className="overflow-x-auto scrollbar-thin scrollbar-thumb-gray-200 cursor-grab hover:scrollbar-thumb-black scrollbar-track-gray-100">
+              <table className="table-auto w-full">
+                {/* Table header */}
+                <thead className="text-xs font-semibold uppercase text-slate-400 bg-slate-50">
+                  <tr>
+                    <th className="p-2 whitespace-nowrap">
+                      <div className="font-semibold text-left">User</div>
+                    </th>
+                    <th className="p-2 whitespace-nowrap">
+                      <div className="font-semibold text-left">Amount</div>
+                    </th>
+                    <th className="p-2 whitespace-nowrap">
+                      <div className="font-semibold text-left">Reference</div>
+                    </th>
+                    <th className="p-2 whitespace-nowrap">
+                      <div className="font-semibold text-left">information</div>
+                    </th>
+                    <th className="p-2 whitespace-nowrap">
+                      <div className="font-semibold text-left">Date</div>
+                    </th>
+                  </tr>
+                </thead>
+                {/* Table body */}
+                <tbody className="text-sm divide-y divide-slate-100">
+                  {transactions.map((transaction) => {
+                    return (
+                      <tr key={transaction.id}>
+                        <td className="p-2 whitespace-nowrap">
+                          <div className="flex Income-center">
+                            <div className="font-medium text-slate-800 capitalize">
+                              {`${transaction.user.first_name} ${transaction.user.last_name}`}
+                            </div>
                           </div>
-                          <div className="font-medium text-slate-800">{customer.name}</div>
-                        </div>
-                      </td>
-                      <td className="p-2 whitespace-nowrap">
-                        <div className="flex Income-center">
-                          <div className="w-10 h-10 shrink-0 mr-2 sm:mr-3">
-                            <img className="rounded-full" src={customer.image} width="40" height="40" alt={customer.name} />
+                        </td>
+                        <td className="p-2 whitespace-nowrap">
+                          <div className="flex Income-center">
+                            <div className="font-medium text-slate-800">
+                              {formatCurrency(transaction.amount)}
+                            </div>
                           </div>
-                          <div className="font-medium text-slate-800">{customer.name}</div>
-                        </div>
-                      </td>
-                      <td className="p-2 whitespace-nowrap">
-                        <div className="text-left">{customer.email}</div>
-                      </td>
-                     
-                    </tr>
-                  )
-                })
-              }
-            </tbody>
-          </table>
-
-        </div>
-
+                        </td>
+                        <td className="p-2 whitespace-nowrap">
+                          <div className="text-left">
+                            {transaction.reference}
+                          </div>
+                        </td>
+                        <td className="p-2 whitespace-nowrap">
+                          <div className="text-left">{transaction.reason}</div>
+                        </td>
+                        <td className="p-2 whitespace-nowrap">
+                          <div className="text-left">
+                            {formatDate(transaction.created_at)}
+                          </div>
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          )
+        )}
       </div>
     </div>
   );

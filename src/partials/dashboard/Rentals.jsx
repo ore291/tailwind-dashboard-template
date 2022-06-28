@@ -1,120 +1,110 @@
-import React from 'react';
-
-import Image01 from '../../images/user-36-05.jpg';
-import Image02 from '../../images/user-36-06.jpg';
-import Image03 from '../../images/user-36-07.jpg';
-import Image04 from '../../images/user-36-08.jpg';
-import Image05 from '../../images/user-36-09.jpg';
+import React from "react";
+import { useGetDashboardRentalsQuery } from "../../store/services/dashboard";
+import { Link } from "react-router-dom";
+import { Spinner, Badge } from "flowbite-react";
+import { formatDate, formatCurrency } from "../../helper";
 
 function Rentals() {
-
-  const customers = [
+  const {
+    data: rentals,
+    isFetching,
+    isLoading,
+  } = useGetDashboardRentalsQuery(
+    { skip: 0, limit: 6 },
     {
-      id: '0',
-      image: Image01,
-      name: 'Alex Shatov',
-      email: 'alexshatov@gmail.com',
-      location: '🇺🇸',
-      spent: '$2,890.66',
-    },
-    {
-      id: '1',
-      image: Image02,
-      name: 'Philip Harbach',
-      email: 'philip.h@gmail.com',
-      location: '🇩🇪',
-      spent: '$2,767.04',
-    },
-    {
-      id: '2',
-      image: Image03,
-      name: 'Mirko Fisuk',
-      email: 'mirkofisuk@gmail.com',
-      location: '🇫🇷',
-      spent: '$2,996.00',
-    },
-    {
-      id: '3',
-      image: Image04,
-      name: 'Olga Semklo',
-      email: 'olga.s@cool.design',
-      location: '🇮🇹',
-      spent: '$1,220.66',
-    },
-    {
-      id: '4',
-      image: Image05,
-      name: 'Burak Long',
-      email: 'longburak@gmail.com',
-      location: '🇬🇧',
-      spent: '$1,890.66',
-    },
-  ];
+      refetchOnMountOrArgChange: true,
+      skip: false,
+    }
+  );
 
   return (
     <div className="col-span-full xl:col-span-6 bg-white shadow-lg rounded-sm border border-slate-200">
       <header className="px-5 py-4 border-b border-slate-100 flex justify-between items-center ">
         <h2 className="font-semibold text-slate-800">New Rentals</h2>
-        <span className="cursor-pointer font-semibold text-slate-800">View All</span>
+        <Link to="/rentals">
+          <span className="cursor-pointer font-semibold text-slate-800">
+            View All
+          </span>
+        </Link>
       </header>
       <div className="p-3">
-
         {/* Table */}
-        <div className="overflow-x-auto">
-          <table className="table-auto w-full">
-            {/* Table header */}
-            <thead className="text-xs font-semibold uppercase text-slate-400 bg-slate-50">
-              <tr>
-                <th className="p-2 whitespace-nowrap">
-                  <div className="font-semibold text-left">Lender</div>
-                </th>
-                <th className="p-2 whitespace-nowrap">
-                  <div className="font-semibold text-left">Lendee</div>
-                </th>
-                <th className="p-2 whitespace-nowrap">
-                  <div className="font-semibold text-left">Item</div>
-                </th>
-                <th className="p-2 whitespace-nowrap">
-                  <div className="font-semibold text-left">Status</div>
-                </th>
-                
-              </tr>
-            </thead>
-            {/* Table body */}
-            <tbody className="text-sm divide-y divide-slate-100">
-              {
-                customers.map(customer => {
-                  return (
-                    <tr key={customer.id}>
-                      <td className="p-2 whitespace-nowrap">
-                        <div className="flex items-center">
-                          <div className="w-10 h-10 shrink-0 mr-2 sm:mr-3">
-                            <img className="rounded-full" src={customer.image} width="40" height="40" alt={customer.name} />
+        {isLoading ? (
+          <div className="row-container">
+            <Spinner
+              color="success"
+              size="lg"
+              aria-label="Success spinner example"
+            />
+          </div>
+        ) : (
+          rentals && (
+            <div className="overflow-x-auto pb-3 scrollbar-thin scrollbar-thumb-gray-200 cursor-grab hover:scrollbar-thumb-black scrollbar-track-gray-100">
+              <table className="table-auto w-full">
+                {/* Table header */}
+                <thead className="text-xs font-semibold uppercase text-slate-400 bg-slate-50">
+                  <tr>
+                    <th className="p-2 whitespace-nowrap">
+                      <div className="font-semibold text-left">Lender</div>
+                    </th>
+                    <th className="p-2 whitespace-nowrap">
+                      <div className="font-semibold text-left">Lendee</div>
+                    </th>
+                    <th className="p-2 whitespace-nowrap">
+                      <div className="font-semibold text-left">Item</div>
+                    </th>
+                    <th className="p-2 whitespace-nowrap">
+                      <div className="font-semibold text-left">
+                        Rent Duration
+                      </div>
+                    </th>
+                    <th className="p-2 whitespace-nowrap">
+                      <div className="font-semibold text-left">Status</div>
+                    </th>
+                  </tr>
+                </thead>
+                {/* Table body */}
+                <tbody className="text-sm divide-y divide-slate-100">
+                  {rentals.map((rental) => {
+                    return (
+                      <tr key={rental.id}>
+                        <td className="p-2 whitespace-nowrap">
+                          <div className="flex items-center">
+                            <div className="font-medium text-slate-800">
+                              {`${rental.lender.first_name} ${rental.lender.last_name}`}
+                            </div>
                           </div>
-                          <div className="font-medium text-slate-800">{customer.name}</div>
-                        </div>
-                      </td>
-                      <td className="p-2 whitespace-nowrap">
-                        <div className="flex items-center">
-                          <div className="w-10 h-10 shrink-0 mr-2 sm:mr-3">
-                            <img className="rounded-full" src={customer.image} width="40" height="40" alt={customer.name} />
+                        </td>
+                        <td className="p-2 whitespace-nowrap">
+                          <div className="flex items-center">
+                            <div className="font-medium text-slate-800">
+                              {`${rental.lendee.first_name} ${rental.lendee.last_name}`}
+                            </div>
                           </div>
-                          <div className="font-medium text-slate-800">{customer.name}</div>
-                        </div>
-                      </td>
-                      <td className="p-2 whitespace-nowrap">
-                        <div className="text-left">{customer.email}</div>
-                      </td>
-                     
-                    </tr>
-                  )
-                })
-              }
-            </tbody>
-          </table>
-
-        </div>
-
+                        </td>
+                        <td className="p-2 whitespace-nowrap">
+                          <div className="text-left">{rental.item.title}</div>
+                        </td>
+                        <td className="p-2 whitespace-nowrap">
+                          <div className="text-left">
+                            {rental.duration} days
+                          </div>
+                        </td>
+                        <td className="p-2 whitespace-nowrap">
+                          <div className="text-left">
+                            <Badge color="failure" size="sm">
+                              {rental.rental_status}
+                            </Badge>
+                          </div>
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          )
+        )}
       </div>
     </div>
   );

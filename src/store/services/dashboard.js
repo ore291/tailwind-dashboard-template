@@ -11,24 +11,55 @@ export const dashboardApi = createApi({
     getDashboardData: builder.query({
         query: () => `dashboard`,
       }),
-    // loginUser: builder.mutation({
-    //   query(data) {
-    //     return {
-    //       url: `token`,
-    //       method: 'POST',
-    //       body: data
-    //     }
-    //   },
-    //   async onQueryStarted(args, { dispatch, queryFulfilled }) {
-    //     try {
-    //       const { data } = await queryFulfilled;
-    //       dispatch(setUser(data));
-    //     } catch (error) {}
-    //   },
-    // }),
+    getDashboardRevenue: builder.query({
+      query: (arg) => {
+        const {skip, limit} = arg;
+        return {
+          url: `revenue`,
+          params: { skip, limit },
+        }
+
+      }
+    }),
+    getDashboardUsers: builder.query({
+      query: (arg) => {
+        const {skip, limit} = arg;
+        return {
+          url: `users`,
+          params: { skip, limit },
+        }
+
+      }
+    }),
+    getDashboardItems: builder.query({
+      query: (arg) => {
+        const {skip, limit} = arg;
+        return {
+          url: `items`,
+          params: { skip, limit },
+        }
+
+      }
+    }),
+    getDashboardRentals: builder.query({
+      query: (arg) => {
+        const {skip, limit} = arg;
+        return {
+          url: `rentals`,
+          params: { skip, limit },
+        }
+
+      }
+    }),
+    
   }),
 });
 
 export const {
-  useGetDashboardDataQuery
+  useGetDashboardDataQuery,
+  useGetDashboardRevenueQuery,
+  useGetDashboardUsersQuery,
+  useGetDashboardItemsQuery,
+  useGetDashboardRentalsQuery
+
 } = dashboardApi;
