@@ -33,7 +33,12 @@ function Users() {
                     >
                       Items
                     </th>
-                   
+                    <th
+                      scope="col"
+                      className="px-6 py-3  whitespace-nowrap text-center"
+                    >
+                      
+                    </th>
 
                     {/* <th scope="col" className="px-6 py-3">
                     <span className="sr-only">Edit</span>

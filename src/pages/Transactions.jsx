@@ -30,12 +30,12 @@ function Transactions() {
                     scope="col"
                     className="px-6 py-3  whitespace-nowrap text-center"
                   >
-                    Items
+                    Item
                   </th>
 
-                  {/* <th scope="col" className="px-6 py-3">
-                    <span className="sr-only">Edit</span>
-                </th> */}
+                  <th scope="col" className="px-6 py-3">
+                    
+                </th>
                   {/* <th scope="col" className="px-6 py-3">
                           <span className="sr-only">Delete</span>
                         </th> */}
