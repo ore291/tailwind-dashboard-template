@@ -1,29 +1,35 @@
 import React, { useEffect } from "react";
-import { Routes, Route, useLocation } from "react-router-dom";
-
-import "./css/style.scss";
-
+import { Route, Routes, useLocation } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import "./charts/ChartjsConfig";
-
+import Category from "./components/categories/Category";
+import { ProtectedRoute } from "./components/ProtectedRoute";
+import "./css/style.scss";
+import AddStaff from "./pages/AddStaff";
+import Categories from "./pages/Categories";
 // Import pages
 import Dashboard from "./pages/Dashboard";
 import Test from "./pages/Dashboard1";
-import Withdrawals from "./pages/Withdrawals";
-import Categories from "./pages/Categories";
-import Category from "./components/categories/Category";
-import AddCategory from "./partials/categories/AddCategory";
-import Rentals from "./pages/Rentals";
 import Items from "./pages/Items";
-import Staff from "./pages/Staff";
-import Users from "./pages/Users";
-import Settings from "./pages/Settings";
-import { ToastContainer } from "react-toastify";
-
-import Transactions from "./pages/Transactions";
-
-import SingleUser from "./pages/SingleUser";
 import Login from "./pages/Login";
-import { ProtectedRoute } from "./components/ProtectedRoute";
+import Message from "./pages/Message";
+import Messages from "./pages/Messages";
+import Rentals from "./pages/Rentals";
+import Settings from "./pages/Settings";
+import SingleUser from "./pages/SingleUser";
+import Staff from "./pages/Staff";
+import Transactions from "./pages/Transactions";
+import Users from "./pages/Users";
+import Withdrawals from "./pages/Withdrawals";
+import AddCategory from "./partials/categories/AddCategory";
+
+
+
+
+
+
+
+
 
 function App() {
   const location = useLocation();
@@ -160,6 +166,18 @@ function App() {
             </ProtectedRoute>
           }
         />
+
+ 
+
+        <Route exact path="/login" element={<Login />} />
+
+        
+       
+      
+       
+        <Route exact path="/staff/add" element={<AddStaff />} />
+        <Route exact path="/Messages" element={<Messages />} />
+        <Route exact path="/Messages/:slug" element={<Message />} />
       </Routes>
       <ToastContainer />
     </>
