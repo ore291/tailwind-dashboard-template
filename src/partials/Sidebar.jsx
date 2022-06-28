@@ -77,7 +77,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
             <div className="px-3 py-2">
               <button onClick={() => setSidebarExpanded(!sidebarExpanded)}>
                 <span className="sr-only">Expand / collapse sidebar</span>
-                
+
                 <svg
                   className="w-6 h-6 fill-current sidebar-expanded:rotate-180"
                   viewBox="0 0 24 24"
@@ -913,6 +913,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                   }`}
                 >
                   <div className="flex items-center">
+                    
                     <svg className="shrink-0 h-6 w-6" viewBox="0 0 24 24">
                       <path
                         className={`fill-current text-slate-600 ${

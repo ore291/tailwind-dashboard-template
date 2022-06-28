@@ -1,8 +1,10 @@
-import React from 'react'
+import React from 'react';
+import Layout from '../components/Layout';
 
 function AddStaff() {
   return (
-    <div>AddStaff</div>
+    <Layout><div>AddStaff</div></Layout>
+    
   )
 }
 

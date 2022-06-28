@@ -42,7 +42,7 @@ function Message() {
           </li>
 
           <div className=" items-center flex gap-4 px-6 py-3">
-            <Checkbox id='is-answered' />
+            <Checkbox id="is-answered" />
             <label
               className="form-check-label inline-block text-gray-800"
               htmlFor="flexRadioDefault1"
