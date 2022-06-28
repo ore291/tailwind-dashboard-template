@@ -77,7 +77,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
             <div className="px-3 py-2">
               <button onClick={() => setSidebarExpanded(!sidebarExpanded)}>
                 <span className="sr-only">Expand / collapse sidebar</span>
-                
+
                 <svg
                   className="w-6 h-6 fill-current sidebar-expanded:rotate-180"
                   viewBox="0 0 24 24"
@@ -900,19 +900,20 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                 }}
               </SidebarLinkGroup> */}
               {/* Messages */}
-              {/* <li
+              <li
                 className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${
                   pathname.includes("messages") && "bg-slate-900"
                 }`}
               >
                 <NavLink
                   end
-                  to="/"
+                  to="/messages"
                   className={`block text-slate-200 hover:text-white truncate transition duration-150 ${
                     pathname.includes("messages") && "hover:text-slate-200"
                   }`}
                 >
                   <div className="flex items-center">
+                    
                     <svg className="shrink-0 h-6 w-6" viewBox="0 0 24 24">
                       <path
                         className={`fill-current text-slate-600 ${
@@ -932,7 +933,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                     </span>
                   </div>
                 </NavLink>
-              </li> */}
+              </li>
               {/* Tasks */}
               {/* <li
                 className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${

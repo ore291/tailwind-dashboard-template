@@ -16,7 +16,6 @@ const Withdrawals = () => {
             <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
               <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
-                  
                   <th scope="col" className="px-6 py-3 text-center">
                     Name
                   </th>
@@ -51,6 +50,12 @@ const Withdrawals = () => {
                     Bank name/<br></br>
                     Bank account
                   </th>
+                  <th
+                    scope="col"
+                    className="px-6 py-3  whitespace-nowrap text-center"
+                  >
+                    
+                  </th>
 
                   {/* <th scope="col" className="px-6 py-3">
                     <span className="sr-only">Edit</span>
@@ -66,7 +71,6 @@ const Withdrawals = () => {
                     key={countries.id}
                     className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
                   >
-                    
                     <th
                       scope="row"
                       className="px-0 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap text-center"
@@ -98,7 +102,8 @@ const Withdrawals = () => {
                       </React.Fragment>
                     </td>
                     <td className="px-6 py-4 truncat text-cente">
-                      {countries.status}<br></br>
+                      {countries.status}
+                      <br></br>
                       {countries.language}
                     </td>
                     <td className="px-0 py-4 truncate">

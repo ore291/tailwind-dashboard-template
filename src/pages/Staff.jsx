@@ -26,8 +26,23 @@ function Staff() {
                   {/* <th scope="col" className="px-6 py-3">
                     
                   </th> */}
-                  <th scope="col" className="px-6 py-3  whitespace-nowrap text-center">
+                  <th
+                    scope="col"
+                    className="px-6 py-3  whitespace-nowrap text-center"
+                  >
                     Staff Id
+                  </th>
+                  <th
+                    scope="col"
+                    className="px-6 py-3  whitespace-nowrap text-center"
+                  >
+                   
+                  </th>
+                  <th
+                    scope="col"
+                    className="px-6 py-3  whitespace-nowrap text-center"
+                  >
+                    
                   </th>
 
                   {/* <th scope="col" className="px-6 py-3">

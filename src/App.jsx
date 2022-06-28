@@ -22,11 +22,13 @@ import Items from "./pages/Items";
 import Staff from "./pages/Staff";
 import Users from './pages/Users';
 import Settings from './pages/Settings';
-
+import AddStaff from './pages/AddStaff';
+import Messages from './pages/Messages';
 import Transactions from './pages/Transactions';
 
 import SingleUser from './pages/SingleUser';
 import Login from './pages/Login';
+import Message from './pages/Message';
 
 
 
@@ -54,7 +56,7 @@ function App() {
         <Route exact path="/transactions" element={<Transactions />} />
 
         <Route exact path="/users/:id" element={<SingleUser />} />
-        
+
         <Route exact path="/login" element={<Login />} />
 
         <Route exact path="/settings" element={<Settings />} />
@@ -62,6 +64,13 @@ function App() {
         <Route exact path="/categories" element={<Categories />} />
         <Route exact path="/categories/add" element={<AddCategory />} />
         <Route exact path="/categories/:slug" element={<Category />} />
+        <Route exact path="/staff/add" element={<AddStaff />} />
+        <Route exact path="/Messages" element={<Messages />} />
+        <Route
+          exact
+          path="/Messages/:slug"
+          element={<Message />}
+        />
       </Routes>
     </>
   );
