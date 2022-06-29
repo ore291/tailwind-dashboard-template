@@ -39,7 +39,7 @@ function DashboardUsers() {
           />
         ) : (
           users && (
-            <div className="overflow-x-auto scrollbar-thin scrollbar-thumb-gray-200 cursor-grab hover:scrollbar-thumb-black scrollbar-track-gray-100">
+            <div className="overflow-x-auto pb-3 scrollbar-thin scrollbar-thumb-gray-200 cursor-grab hover:scrollbar-thumb-black scrollbar-track-gray-100">
               <table className="table-auto w-full">
                 {/* Table header */}
                 <thead className="text-xs font-semibold uppercase text-slate-400 bg-slate-50">
