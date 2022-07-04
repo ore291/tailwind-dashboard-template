@@ -167,15 +167,7 @@ function App() {
             </ProtectedRoute>
           }
         />
-        <Route
-          exact
-          path="/test-table"
-          element={
-            <ProtectedRoute>
-              <TestTable />
-            </ProtectedRoute>
-          }
-        />
+        
 
  
 
