@@ -22,7 +22,7 @@ import Transactions from "./pages/Transactions";
 import Users from "./pages/Users";
 import Withdrawals from "./pages/Withdrawals";
 import AddCategory from "./partials/categories/AddCategory";
-import TestTable from "./pages/TestTable";
+
 
 
 
