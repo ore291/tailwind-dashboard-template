@@ -11,3 +11,26 @@ export const formatCurrency = (amount) => {
     currency: 'NGN'
   }).format(amount);
 };
+
+
+export const  check_status = (status) => {
+  switch (status) {
+    case "rejected":
+      return "failure";
+      break;
+    case "approved":
+      return "success";
+      break;
+    case "completed":
+      return "success";
+      break;
+    case "cancelled":
+      return "failure";
+      break;
+    case "pending":
+      return "info";
+      break;
+    default:
+      return "info";
+  }
+};

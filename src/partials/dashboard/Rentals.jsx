@@ -2,7 +2,7 @@ import React from "react";
 import { useGetDashboardRentalsQuery } from "../../store/services/dashboard";
 import { Link } from "react-router-dom";
 import { Spinner, Badge } from "flowbite-react";
-import { formatDate, formatCurrency } from "../../helper";
+import { formatDate, formatCurrency , check_status} from "../../helper";
 
 function Rentals() {
   const {
@@ -92,7 +92,7 @@ function Rentals() {
                         </td>
                         <td className="p-2 whitespace-nowrap">
                           <div className="text-left">
-                            <Badge color="failure" size="sm">
+                            <Badge color={check_status(rental.rental_status)} size="sm">
                               {rental.rental_status}
                             </Badge>
                           </div>

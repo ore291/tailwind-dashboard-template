@@ -1,232 +1,66 @@
-import React from "react";
-import {
-  useTable,
-  useGlobalFilter,
-  useAsyncDebounce,
-  useFilters,
-  useSortBy,
-  usePagination,
-} from "react-table";
-import "regenerator-runtime/runtime";
+import React, { useMemo } from "react";
+import { useTable } from "react-table";
+import { Spinner } from "flowbite-react";
+import { useNavigate } from "react-router-dom";
 
-function GlobalFilter({
-  preGlobalFilteredRows,
-  globalFilter,
-  setGlobalFilter,
-}) {
-  const count = preGlobalFilteredRows.length;
-  const [value, setValue] = React.useState(globalFilter);
-  const onChange = useAsyncDebounce((value) => {
-    setGlobalFilter(value || undefined);
-  }, 200);
-
-  return (
-    <span>
-      Search:{" "}
-      <input
-        value={value || ""}
-        onChange={(e) => {
-          setValue(e.target.value);
-          onChange(e.target.value);
-        }}
-        placeholder={`${count} records...`}
-      />
-    </span>
-  );
-}
-
-export function SelectColumnFilter({
-  column: { filterValue, setFilter, preFilteredRows, id },
-}) {
-  // Calculate the options for filtering
-  // using the preFilteredRows
-  const options = React.useMemo(() => {
-    const options = new Set();
-    preFilteredRows.forEach((row) => {
-      options.add(row.values[id]);
-    });
-    return [...options.values()];
-  }, [id, preFilteredRows]);
-
-  // Render a multi-select box
-  return (
-    <select
-      name={id}
-      id={id}
-      value={filterValue}
-      onChange={(e) => {
-        setFilter(e.target.value || undefined);
-      }}
-    >
-      <option value="">All</option>
-      {options.map((option, i) => (
-        <option key={i} value={option}>
-          {option}
-        </option>
-      ))}
-    </select>
-  );
-}
-
-function Table({ columns, data }) {
-  // Use the state and functions returned from useTable to build your UI
+const AppTable = ({ columns, data, isLoading, manualPagination = false , onViewClick}) => {
+  
+  const columnData = useMemo(() => columns, [columns]);
+  const rowData = useMemo(() => data, [data]);
   const {
     getTableProps,
     getTableBodyProps,
     headerGroups,
     rows,
-    page,
     prepareRow,
+  } = useTable({
+    columns: columnData,
+    data: rowData,
+    manualPagination
+  });
 
-    // The rest of these things are super handy, too ;)
-    canPreviousPage,
-    canNextPage,
-    pageOptions,
-    pageCount,
-    gotoPage,
-    nextPage,
-    previousPage,
-    setPageSize,
-
-    state, // new
-    preGlobalFilteredRows, // new
-    setGlobalFilter,
-  } = useTable(
-    {
-      columns,
-      data,
-    },
-    useFilters,
-    useGlobalFilter,
-    useSortBy,
-    usePagination
-  );
-
-  // Render the UI for your table
   return (
     <>
-      <GlobalFilter
-        preGlobalFilteredRows={preGlobalFilteredRows}
-        globalFilter={state.globalFilter}
-        setGlobalFilter={setGlobalFilter}
-      />
-      {/* {headerGroups.map((headerGroup) =>
-        headerGroup.headers.map((column) =>
-          column.Filter ? (
-            <div key={column.id}>
-              <label for={column.id}>{column.render("Header")}: </label>
-              {column.render("Filter")}
-            </div>
-          ) : null
-        )
-      )} */}
-      <div className="mt-2 flex flex-col">
-        <div className="-my-2 overflow-x-auto -mx-4 sm:-mx-6 lg:-mx-8">
-          <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-            <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-              <table
-                {...getTableProps()}
-                className="min-w-full divide-y divide-gray-200"
-              >
-                <thead className="bg-gray-50">
-                  {headerGroups.map((headerGroup) => (
-                    <tr {...headerGroup.getHeaderGroupProps()}>
-                      {headerGroup.headers.map((column) => (
-                        // Add the sorting props to control sorting. For this example
-                        // we can add them into the header props
-                        <th
-                          {...column.getHeaderProps(
-                            column.getSortByToggleProps()
-                          )}
-                        >
-                          {column.render("Header")}
-                          {/* Add a sort direction indicator */}
-                          <span>
-                            {column.isSorted
-                              ? column.isSortedDesc
-                                ? " ▼"
-                                : " ▲"
-                              : ""}
-                          </span>
-                        </th>
-                      ))}
-                    </tr>
-                  ))}
-                </thead>
-                <tbody
-                  {...getTableBodyProps()}
-                  className="bg-white divide-y divide-gray-200"
-                >
-                  {page.map((row, i) => {
-                    // new
-                    prepareRow(row);
+    {isLoading ? (
+     <div className="text-center">
+     <Spinner size="xl" aria-label="Center-aligned spinner example" />
+   </div>
+    ) : (
+      <>
+        <table {...getTableProps()} className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+          <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            {headerGroups.map((headerGroup) => (
+              <tr {...headerGroup.getHeaderGroupProps()} >
+                {headerGroup.headers.map((column) => (
+                  <th {...column.getHeaderProps()} scope="col" className="px-1 py-3 text-center whitespace-nowrap">
+                    {column.render("Header")}
+                  </th>
+                ))}
+              </tr>
+            ))}
+          </thead>
+          
+          {/* onClick={()=>onRowClick(row.values)}  */}
+          <tbody {...getTableBodyProps()} >
+            {rows.map((row, i) => {
+              prepareRow(row);
+              return (
+                <tr {...row.getRowProps()}  className="bg-white border-b p-2 dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 cursor-pointer" >
+                  {row.cells.map((cell) => {
                     return (
-                      <tr {...row.getRowProps()}>
-                        {row.cells.map((cell) => {
-                          return (
-                            <td
-                              {...cell.getCellProps()}
-                              className="px-6 py-4 whitespace-nowrap"
-                            >
-                              {cell.render("Cell")}
-                            </td>
-                          );
-                        })}
-                      </tr>
+                      <td className="px-2 py-3 truncate text-center "
+                      style={{ width: "80px" }} {...cell.getCellProps()}>{cell.render("Cell")}</td>
                     );
                   })}
-                </tbody>
-              </table>
-              <div className="pagination">
-                <button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
-                  {"<<"}
-                </button>{" "}
-                <button
-                  onClick={() => previousPage()}
-                  disabled={!canPreviousPage}
-                >
-                  {"<"}
-                </button>{" "}
-                <button onClick={() => nextPage()} disabled={!canNextPage}>
-                  {">"}
-                </button>{" "}
-                <button
-                  onClick={() => gotoPage(pageCount - 1)}
-                  disabled={!canNextPage}
-                >
-                  {">>"}
-                </button>{" "}
-                <span>
-                  Page{" "}
-                  <strong>
-                    {state.pageIndex + 1} of {pageOptions.length}
-                  </strong>{" "}
-                </span>
-                <select
-                  value={state.pageSize}
-                  onChange={(e) => {
-                    setPageSize(Number(e.target.value));
-                  }}
-                >
-                  {[5, 10, 20].map((pageSize) => (
-                    <option key={pageSize} value={pageSize}>
-                      Show {pageSize}
-                    </option>
-                  ))}
-                </select>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div>
-        {/* new */}
-        <pre>
-          <code>{JSON.stringify(state, null, 2)}</code>
-        </pre>
-      </div>
-    </>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </>
+    )}
+  </>
   );
-}
+};
 
-export default Table;
+export default AppTable;

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Layout from "../Layout";
 import { useParams } from "react-router-dom";
 import {
@@ -25,16 +25,20 @@ const Category = () => {
 
   const onDelete = async (id) => {
     await deleteCategory(id);
-    setShow(false);
-    toast.error('Category deleted successfully!', {
-      position: "top-right",
-      hideProgressBar: true,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      });
   };
+
+  useEffect(() => {
+    isSuccess && setShow(false);
+    isSuccess && toast.error('Category deleted successfully!', {
+        position: "top-right",
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        });
+    
+  },[isSuccess])
 
   return (
     <Layout>

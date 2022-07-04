@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from "react";
 import Layout from "../components/Layout";
-import Table, { SelectColumnFilter } from "../components/Table";
+
 import { useGetCategoriesQuery } from "../store/services/categories";
 import CategoryCard from "../components/categories/CategoryCard";
 

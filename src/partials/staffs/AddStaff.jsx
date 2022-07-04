@@ -1,7 +1,6 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import Layout from "../../components/Layout";
 import {
-  useGetCategoriesQuery,
   useCreateCategoryMutation,
 } from "../../store/services/categories";
 import { useForm } from "react-hook-form";
@@ -18,29 +17,21 @@ const AddCategory = () => {
     formState: { errors },
   } = useForm();
 
-  const { data: categories, error, isLoading } = useGetCategoriesQuery(1);
-
-  const [
-    createCategory, // This is the mutation trigger
-    { isLoading: isCreating, isSuccess }, // This is the destructured mutation result
-  ] = useCreateCategoryMutation();
-
-  const [categorySlug, setCategorySlug] = useState("")
-
-  useEffect(() => {
-    isSuccess && navigate(`/categories/${categorySlug}`)
-  }, [isSuccess])
   
 
+//   const [
+//     createCategory, // This is the mutation trigger
+//     { isLoading: isCreating, isSuccess }, // This is the destructured mutation result
+//   ] = useCreateCategoryMutation();
+
   const onSubmit = async (data) => {
-    var category = JSON.parse(data.category)
     const formData = new FormData();
-    setCategorySlug(category.slug)
     formData.append("file", data.file[0]);
     formData.append("name", data.name);
     formData.append("description", data.description);
-    formData.append("parent_id", category.id);
+    formData.append("parent_id", data.parent_id);
     await createCategory(formData);
+    navigate("/categories")
   };
   return (
     <Layout>
@@ -113,11 +104,11 @@ const AddCategory = () => {
                   name="parent"
                   required
                  
-                  {...register("category")}
+                  {...register("parent_id")}
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500"
                 >
                   {categories.map((category) => (
-                    <option value={JSON.stringify(category)} key={category.id}>
+                    <option value={category.id} key={category.id}>
                       {category.name}
                     </option>
                   ))}

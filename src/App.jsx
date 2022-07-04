@@ -22,6 +22,7 @@ import Transactions from "./pages/Transactions";
 import Users from "./pages/Users";
 import Withdrawals from "./pages/Withdrawals";
 import AddCategory from "./partials/categories/AddCategory";
+import TestTable from "./pages/TestTable";
 
 
 
@@ -166,6 +167,15 @@ function App() {
             </ProtectedRoute>
           }
         />
+        <Route
+          exact
+          path="/test-table"
+          element={
+            <ProtectedRoute>
+              <TestTable />
+            </ProtectedRoute>
+          }
+        />
 
  
 
@@ -177,7 +187,7 @@ function App() {
        
         <Route exact path="/staff/add" element={<AddStaff />} />
         <Route exact path="/Messages" element={<Messages />} />
-        <Route exact path="/Messages/:slug" element={<Message />} />
+        <Route exact path="/Messages/:id" element={<Message />} />
       </Routes>
       <ToastContainer />
     </>
