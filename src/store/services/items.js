@@ -5,8 +5,8 @@ export const itemsApi = createApi({
   reducerPath: "itemsApi",
   tagTypes: ['Items', "Messages", "Withdraw", "Settings"],
   baseQuery: fetchBaseQuery({
-    // baseUrl: `${process.env.VITE_APP_BASE_URL}/api/`
-    baseUrl: `http://localhost:8000/api/`,
+    baseUrl: `${import.meta.env.VITE_APP_BASE_URL}/api/`,
+    // baseUrl: `http://localhost:8000/api/`,
     prepareHeaders: (headers, { getState }) => {
       const token =
         JSON.parse(localStorage.getItem("accessToken")) || getState().user.token;

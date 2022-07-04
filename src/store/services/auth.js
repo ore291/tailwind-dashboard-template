@@ -4,8 +4,8 @@ import {setUser} from "../features/userSlice"
 export const authApi = createApi({
   reducerPath: "authApi",
   baseQuery: fetchBaseQuery({
-    // baseUrl: `${process.env.VITE_APP_BASE_URL}/api/`
-    baseUrl: `http://localhost:8000/api/admin/`
+    baseUrl: `${import.meta.env.VITE_APP_BASE_URL}/api/admin/`
+    // baseUrl: `http://localhost:8000/api/admin/`
   }),
   endpoints: (builder) => ({
     loginUser: builder.mutation({
