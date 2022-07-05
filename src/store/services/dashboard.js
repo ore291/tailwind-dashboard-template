@@ -4,7 +4,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const dashboardApi = createApi({
   reducerPath: "dashboardApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: `${import.meta.env.VITE_APP_BASE_URL}/api/admin/`,
+    baseUrl: `api.28bookings.com/api/admin/`,
     // baseUrl: `http://localhost:8000/api/admin/`
   }),
   endpoints: (builder) => ({

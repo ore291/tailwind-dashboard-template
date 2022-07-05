@@ -5,7 +5,7 @@ export const usersApi = createApi({
   reducerPath: "usersApi",
   tagTypes: ['User', "Staffs"],
   baseQuery: fetchBaseQuery({
-    baseUrl: `${import.meta.env.VITE_APP_BASE_URL}/api/`,
+    baseUrl: `api.28bookings.com/api/`,
     // baseUrl: `http://localhost:8000/api/`,
     prepareHeaders: (headers, { getState }) => {
       const token =

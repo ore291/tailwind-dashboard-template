@@ -1,4 +1,4 @@
-export const url = import.meta.env.VITE_BASE_IMAGE_URL;
+export const url = 'api.28bookings.com/static/users';
 
 export const formatDate = (dateString) => {
   const options = { year: "numeric", month: "long", day: "numeric" };

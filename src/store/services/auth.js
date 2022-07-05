@@ -4,7 +4,7 @@ import {setUser} from "../features/userSlice"
 export const authApi = createApi({
   reducerPath: "authApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: `${import.meta.env.VITE_APP_BASE_URL}/api/admin/`
+    baseUrl: `api.28bookings.com/api/admin/`
     // baseUrl: `http://localhost:8000/api/admin/`
   }),
   endpoints: (builder) => ({
