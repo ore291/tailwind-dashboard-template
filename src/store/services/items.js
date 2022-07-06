@@ -5,7 +5,7 @@ export const itemsApi = createApi({
   reducerPath: "itemsApi",
   tagTypes: ['Items', "Messages", "Withdraw", "Settings"],
   baseQuery: fetchBaseQuery({
-    baseUrl: `api.28bookings.com/api/`,
+    baseUrl: `https://api.28bookings.com/api/`,
     // baseUrl: `http://localhost:8000/api/`,
     prepareHeaders: (headers, { getState }) => {
       const token =

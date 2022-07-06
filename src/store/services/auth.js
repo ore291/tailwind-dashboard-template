@@ -4,7 +4,7 @@ import {setUser} from "../features/userSlice"
 export const authApi = createApi({
   reducerPath: "authApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: `api.28bookings.com/api/admin/`
+    baseUrl: `https://api.28bookings.com/api/admin/`
     // baseUrl: `http://localhost:8000/api/admin/`
   }),
   endpoints: (builder) => ({

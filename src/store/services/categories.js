@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const categoriesApi = createApi({
   reducerPath: "categoriesApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: `api.28bookings.com/api/`
+    baseUrl: `https://api.28bookings.com/api/`
     // baseUrl: `http://localhost:8000/api/`
   }),
   tagTypes: ['Categories'],
