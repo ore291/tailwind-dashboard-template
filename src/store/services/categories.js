@@ -45,7 +45,19 @@ export const categoriesApi = createApi({
       },
       // Invalidates all queries that subscribe to this Post `id` only.
       invalidatesTags: ['Categories'],
-    })
+    }),
+    editCategory: builder.mutation({
+      query(data) {
+        const {id, body} = data;
+        return {
+          url: `category/${id}`,
+          method: 'PATCH',
+          body: body
+        }
+      },
+      // Invalidates all queries that subscribe to this Post `id` only.
+      invalidatesTags: ['Categories'],
+    }),
   }),
 });
 
@@ -56,5 +68,6 @@ export const {
   useGetAllCategoriesQuery,
   useGetCategoryBySlugQuery,
   useDeleteCategoryMutation,
-  useCreateCategoryMutation
+  useCreateCategoryMutation,
+  useEditCategoryMutation
 } = categoriesApi;

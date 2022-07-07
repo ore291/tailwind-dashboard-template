@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react";
 import Layout from "../Layout";
-import { useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import {
   useGetCategoryBySlugQuery,
   useDeleteCategoryMutation,
 } from "../../store/services/categories";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Modal, Button, Toast } from "flowbite-react";
 import { HiOutlineExclamationCircle, HiX } from "react-icons/hi";
 import { ToastContainer, toast } from "react-toastify";
 
-
 const Category = () => {
+  let navigate = useNavigate();
   const { slug } = useParams();
   const [show, setShow] = useState(false);
   const { data: category, isLoading } = useGetCategoryBySlugQuery(slug);
@@ -29,16 +29,16 @@ const Category = () => {
 
   useEffect(() => {
     isSuccess && setShow(false);
-    isSuccess && toast.error('Category deleted successfully!', {
+    isSuccess &&
+      toast.error("Category deleted successfully!", {
         position: "top-right",
         hideProgressBar: true,
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        });
-    
-  },[isSuccess])
+      });
+  }, [isSuccess]);
 
   return (
     <Layout>
@@ -110,7 +110,7 @@ const Category = () => {
                           {/* <td className="px-6 py-4 text-right">
                     <a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                 </td> */}
-                          <td className="px-6 py-4 text-right">
+                          <td className="px-4 py-4 text-right">
                             {/* <a
                               href="#"
                               className="font-medium text-red-600 dark:text-red-500 hover:underline"
@@ -118,13 +118,24 @@ const Category = () => {
                               Delete
                             </a> */}
                             <React.Fragment>
-                              <Button
-                                color="failure"
-                                size="xs"
-                                onClick={toggleModal}
-                              >
-                                Delete
-                              </Button>
+                              <div className="row-container space-x-2">
+                                <Button
+                                  color="info"
+                                  size="xs"
+                                  onClick={() =>
+                                    navigate(`/category/edit/${category.slug}`)
+                                  }
+                                >
+                                  Edit
+                                </Button>
+                                <Button
+                                  color="failure"
+                                  size="xs"
+                                  onClick={toggleModal}
+                                >
+                                  Delete
+                                </Button>
+                              </div>
                               <Modal
                                 show={show}
                                 size="md"

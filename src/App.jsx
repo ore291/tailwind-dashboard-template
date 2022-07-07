@@ -22,6 +22,7 @@ import Transactions from "./pages/Transactions";
 import Users from "./pages/Users";
 import Withdrawals from "./pages/Withdrawals";
 import AddCategory from "./partials/categories/AddCategory";
+import EditCategory from "./partials/categories/EditCategory";
 
 
 
@@ -155,6 +156,15 @@ function App() {
           element={
             <ProtectedRoute>
               <AddCategory />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          exact
+          path="/category/edit/:slug"
+          element={
+            <ProtectedRoute>
+              <EditCategory />
             </ProtectedRoute>
           }
         />
