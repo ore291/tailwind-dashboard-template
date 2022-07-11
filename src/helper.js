@@ -1,4 +1,4 @@
-export const url = 'https://api.28bookings.com/static/users';
+export const url = 'https://api.28bookings.com/static';
 
 export const formatDate = (dateString) => {
   const options = { year: "numeric", month: "long", day: "numeric" };

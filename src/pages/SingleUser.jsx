@@ -57,15 +57,15 @@ const SingleUser = () => {
 
               <Tabs>
                 <TabList className="  flex text-center md:w-10/12 bg-slate-300 pl-  justify-around  gap-1 border-2 mx-auto border-slate-500">
-                  <Tab className="whitesapce-nowrap md:w-4/12 w-4/12 text-center px- py-2 text-lg md:text-2xl bg-slate-300 cursor-pointer">
+                  <Tab className="whitesapce-nowrap md:w-6/12 w-6/12 text-center px- py-2 text-lg md:text-2xl bg-slate-300 cursor-pointer">
                     Rentals
                   </Tab>
-                  <Tab className="whitesapce-nowrap md:w-4/12 w-4/12 text-center px- bg-slate-300 py-2 text-lg md:text-2xl cursor-pointer">
+                  <Tab className="whitesapce-nowrap md:w-6/12 w-6/12 text-center px- bg-slate-300 py-2 text-lg md:text-2xl cursor-pointer">
                     Items
                   </Tab>
-                  <Tab className="whitesapce-nowrap md:w-4/12 w-4/12 text-center px- py-2 bg-slate-300 text-lg md:text-2xl cursor-pointer">
+                  {/* <Tab className="whitesapce-nowrap md:w-4/12 w-4/12 text-center px- py-2 bg-slate-300 text-lg md:text-2xl cursor-pointer">
                     Withdrawals
-                  </Tab>
+                  </Tab> */}
                   {/* <Tab className="whitesapce-nowrap text-center px-8 py-2 text-lg md:text-2xl cursor-pointer">
             Transctions
           </Tab> */}
@@ -93,11 +93,11 @@ const SingleUser = () => {
                     </h2>
                   )}
                 </TabPanel>
-                <TabPanel>
+                {/* <TabPanel>
                   <div>
                     <SingleWithdrawalTable />
                   </div>
-                </TabPanel>
+                </TabPanel> */}
               </Tabs>
             </>
           )
