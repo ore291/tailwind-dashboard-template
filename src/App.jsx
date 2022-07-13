@@ -23,11 +23,7 @@ import Users from "./pages/Users";
 import Withdrawals from "./pages/Withdrawals";
 import AddCategory from "./partials/categories/AddCategory";
 import EditCategory from "./partials/categories/EditCategory";
-
-
-
-
-
+import Disputes from "./pages/Disputes"
 
 
 
@@ -107,6 +103,15 @@ function App() {
           element={
             <ProtectedRoute>
               <Transactions />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          exact
+          path="/disputes"
+          element={
+            <ProtectedRoute>
+              <Disputes />
             </ProtectedRoute>
           }
         />

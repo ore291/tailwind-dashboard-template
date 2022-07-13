@@ -7,6 +7,7 @@ import { MdPendingActions, MdMarkEmailUnread } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { useGetDashboardDataQuery } from "../../store/services/dashboard";
 import { Spinner } from "flowbite-react";
+import {formatCurrency} from "../../helper";
 
 const DashboardInfo = ({ user }) => {
   const {
@@ -68,7 +69,7 @@ const DashboardInfo = ({ user }) => {
              <InfoCard
                 Icon={FaMoneyCheckAlt}
                 text="Total Revenue"
-                value={`₦${info.revenue}`}
+                value={formatCurrency(info.revenue)}
                 color="!bg-orange-500"
               />
             </Link>
