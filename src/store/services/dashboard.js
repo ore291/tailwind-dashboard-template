@@ -22,13 +22,13 @@ export const dashboardApi = createApi({
   }),
   endpoints: (builder) => ({
     getDashboardData: builder.query({
-      query: () => `admin/dashboard`,
+      query: () => `admin/dashboard/`,
     }),
     getDashboardRevenue: builder.query({
       query: (arg) => {
         const { skip, limit } = arg;
         return {
-          url: `admin/revenue`,
+          url: `admin/revenue/`,
           params: { skip, limit },
         };
       },
@@ -37,7 +37,7 @@ export const dashboardApi = createApi({
       query: (arg) => {
         const { skip, limit } = arg;
         return {
-          url: `admin/users`,
+          url: `admin/users/`,
           params: { skip, limit },
         };
       },
@@ -46,7 +46,7 @@ export const dashboardApi = createApi({
       query: (arg) => {
         const { skip, limit } = arg;
         return {
-          url: `admin/items`,
+          url: `admin/items/`,
           params: { skip, limit },
         };
       },
@@ -55,7 +55,7 @@ export const dashboardApi = createApi({
       query: (arg) => {
         const { skip, limit } = arg;
         return {
-          url: `admin/rentals`,
+          url: `admin/rentals/`,
           params: { skip, limit },
         };
       },
@@ -64,7 +64,7 @@ export const dashboardApi = createApi({
       query: (arg) => {
         const { page, size, query } = arg;
         return {
-          url: `admin/disputes/default`,
+          url: `admin/disputes/default/`,
           params: { page, size, query },
         };
       },
@@ -72,7 +72,7 @@ export const dashboardApi = createApi({
     }),
     updateDispute: builder.mutation({
       query: ({ id, body }) => ({
-        url: `disputes/${id}`,
+        url: `disputes/${id}/`,
         method: "PATCH",
         body: body,
       }),
@@ -80,14 +80,14 @@ export const dashboardApi = createApi({
     }),
     confirmRefund: builder.mutation({
       query: (id) => ({
-        url: `disputes/refund/${id}`,
+        url: `disputes/refund/${id}/`,
         method: "POST",
       }),
       invalidatesTags: ["Disputes"],
     }),
     cancelBooking: builder.mutation({
       query: (id) => ({
-        url: `admin/rental/cancel/${id}`,
+        url: `admin/rental/cancel/${id}/`,
         method: "POST",
       }),
       invalidatesTags: ["Disputes"],

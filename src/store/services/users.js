@@ -24,7 +24,7 @@ export const usersApi = createApi({
       query: (arg) => {
         const { page, size, query } = arg;
         return {
-          url: `admin/users/default`,
+          url: `admin/users/default/`,
           params: { page, size, query },
         };
       },
@@ -32,7 +32,7 @@ export const usersApi = createApi({
     getUser: builder.query({
       query: (id) => {
         return {
-          url: `user/${id}`,
+          url: `user/${id}/`,
         };
       },
       providesTags: ['User'],
@@ -40,7 +40,7 @@ export const usersApi = createApi({
     getUserRentals: builder.query({
       query: (id) => {
         return {
-          url: `/admin/rentals/${id}`,
+          url: `/admin/rentals/${id}/`,
         };
       },
     }),
@@ -53,7 +53,7 @@ export const usersApi = createApi({
     }),
     updateUserStatus: builder.mutation({
       query: ({ id, status }) => ({
-        url: `admin/users/${id}`,
+        url: `admin/users/${id}/`,
         method: "PATCH",
         body: {
           is_active: status,
@@ -63,7 +63,7 @@ export const usersApi = createApi({
     }),
     updateUser: builder.mutation({
       query: ({userId, body}) => ({
-        url: `admin/users/${userId}`,
+        url: `admin/users/${userId}/`,
         method: "PATCH",
         body
       }),
@@ -71,7 +71,7 @@ export const usersApi = createApi({
     }),
     createStaff: builder.mutation({
       query: (body) => ({
-        url: `admin/staffs`,
+        url: `admin/staffs/`,
         method: "POST",
         body
       }),
@@ -80,7 +80,7 @@ export const usersApi = createApi({
     deleteStaff: builder.mutation({
       query(id) {
         return {
-          url: `admin/staffs/${id}`,
+          url: `admin/staffs/${id}/`,
           method: 'DELETE',
         }
       },
@@ -93,7 +93,7 @@ export const usersApi = createApi({
       query: (arg) => {
         const { page, size , query} = arg;
         return {
-          url: `admin/users/staffs`,
+          url: `admin/users/staffs/`,
           params: { page, size , query},
         };
       },

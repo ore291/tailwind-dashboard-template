@@ -9,26 +9,26 @@ export const categoriesApi = createApi({
   tagTypes: ['Categories'],
   endpoints: (builder) => ({
     getCategories: builder.query({
-      query: (id) => `subcategories/${id}`,
+      query: (id) => `subcategories/${id}/`,
       providesTags: ['Categories'],
     }),
     getCategory: builder.query({
-      query: (id) => `categories/${id}`,
+      query: (id) => `categories/${id}/`,
     }),
     getAllCategories: builder.query({
-      query: () => `categories/all`,
+      query: () => `categories/all/`,
     }),
     getItemsByCategory: builder.query({
-      query: (id) => `categories/${id}/items`,
+      query: (id) => `categories/${id}/items/`,
     }),
     getCategoryBySlug: builder.query({
-      query: (slug) => `category/${slug}`,
+      query: (slug) => `category/${slug}/`,
       providesTags: ['Categories'],
     }),
     deleteCategory: builder.mutation({
       query(id) {
         return {
-          url: `categories/${id}`,
+          url: `categories/${id}/`,
           method: 'DELETE',
         }
       },
@@ -38,7 +38,7 @@ export const categoriesApi = createApi({
     createCategory: builder.mutation({
       query(data) {
         return {
-          url: `category`,
+          url: `category/`,
           method: 'POST',
           body: data
         }
@@ -50,7 +50,7 @@ export const categoriesApi = createApi({
       query(data) {
         const {id, body} = data;
         return {
-          url: `category/${id}`,
+          url: `category/${id}/`,
           method: 'PATCH',
           body: body
         }

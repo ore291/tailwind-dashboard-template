@@ -24,7 +24,7 @@ export const itemsApi = createApi({
       query: (arg) => {
         const { page, size, query } = arg;
         return {
-          url: `admin/withdrawals/default`,
+          url: `admin/withdrawals/default/`,
           params: { page, size, query },
         };
       },
@@ -33,7 +33,7 @@ export const itemsApi = createApi({
     getSettings: builder.query({
       query: () => {    
         return {
-          url: `settings`,
+          url: `settings/`,
         
         };
       },
@@ -43,7 +43,7 @@ export const itemsApi = createApi({
       query: (arg) => {
         const { page, size, query } = arg;
         return {
-          url: `admin/users/items`,
+          url: `admin/users/items/`,
           params: { page, size, query },
         };
       },
@@ -53,7 +53,7 @@ export const itemsApi = createApi({
       query: (arg) => {
         const { page, size, query } = arg;
         return {
-          url: `contacts`,
+          url: `contacts/`,
           params: { page, size, query },
         };
       },
@@ -63,7 +63,7 @@ export const itemsApi = createApi({
       query: (arg) => {
         const { page, size, id } = arg;
         return {
-          url: `admin/rentals/default`,
+          url: `admin/rentals/default/`,
           params: { page, size, id },
         };
       },
@@ -72,7 +72,7 @@ export const itemsApi = createApi({
       query: (arg) => {
         const { page, size, id } = arg;
         return {
-          url: `admin/transactions/default`,
+          url: `admin/transactions/default/`,
           params: { page, size, id },
         };
       },
@@ -87,7 +87,7 @@ export const itemsApi = createApi({
     }),
     updateItem: builder.mutation({
         query: ({itemId, body}) => ({
-          url: `admin/items/${itemId}`,
+          url: `admin/items/${itemId}/`,
           method: "PATCH",
           body
         }),
@@ -95,7 +95,7 @@ export const itemsApi = createApi({
       }),
     updateContact: builder.mutation({
         query: (id) => ({
-          url: `contacts/${id}`,
+          url: `contacts/${id}/`,
           method: "PATCH",
           body : {
             reviewed : true
@@ -105,7 +105,7 @@ export const itemsApi = createApi({
       }),
     updateWithdrawal: builder.mutation({
         query: (id) => ({
-          url: `withdrawal/${id}`,
+          url: `withdrawal/${id}/`,
           method: "PATCH",
           body : {
             status : 1
@@ -116,7 +116,7 @@ export const itemsApi = createApi({
 
     updateSettings: builder.mutation({
       query: (value) => ({
-        url: `settings`,
+        url: `settings/`,
         method: "PATCH",
         body : {
           commision : value
