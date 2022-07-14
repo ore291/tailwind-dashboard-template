@@ -64,7 +64,7 @@ export const dashboardApi = createApi({
       query: (arg) => {
         const { page, size, query } = arg;
         return {
-          url: `admin/disputes/default/`,
+          url: `admin/disputes/default`,
           params: { page, size, query },
         };
       },

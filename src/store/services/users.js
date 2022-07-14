@@ -24,7 +24,7 @@ export const usersApi = createApi({
       query: (arg) => {
         const { page, size, query } = arg;
         return {
-          url: `admin/users/default/`,
+          url: `admin/users/default`,
           params: { page, size, query },
         };
       },
@@ -93,7 +93,7 @@ export const usersApi = createApi({
       query: (arg) => {
         const { page, size , query} = arg;
         return {
-          url: `admin/users/staffs/`,
+          url: `admin/users/staffs`,
           params: { page, size , query},
         };
       },

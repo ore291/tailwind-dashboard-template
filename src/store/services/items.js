@@ -24,7 +24,7 @@ export const itemsApi = createApi({
       query: (arg) => {
         const { page, size, query } = arg;
         return {
-          url: `admin/withdrawals/default/`,
+          url: `admin/withdrawals/default`,
           params: { page, size, query },
         };
       },
@@ -63,7 +63,7 @@ export const itemsApi = createApi({
       query: (arg) => {
         const { page, size, id } = arg;
         return {
-          url: `admin/rentals/default/`,
+          url: `admin/rentals/default`,
           params: { page, size, id },
         };
       },
@@ -72,7 +72,7 @@ export const itemsApi = createApi({
       query: (arg) => {
         const { page, size, id } = arg;
         return {
-          url: `admin/transactions/default/`,
+          url: `admin/transactions/default`,
           params: { page, size, id },
         };
       },
